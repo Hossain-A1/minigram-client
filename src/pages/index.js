@@ -8,20 +8,17 @@ const HomePage = () => {
   const handlePost = async (e) => {
     e.preventDefault();
 
-    
-    const posts = { title };
+    const task = { title };
     const res = await fetch("http://localhost:4000/api/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(posts),
+      body: JSON.stringify(task),
     });
     const data = await res.json();
-    console.log(data);
 
     if (res.ok) {
-      setPosts(data);
       setTitle("");
     }
     return;
@@ -56,10 +53,17 @@ const HomePage = () => {
           className='input'
         />
         <button type='submit'>Post</button>
+
+
+      
       </form>
 
-      <div>
-        {posts && posts.map((post) => <PostItem key={post._id} post={post} />)}
+      <div className="all-post">
+       {
+        posts && posts.map((post)=>(
+          <PostItem key={post._id} post={post}/>
+        ))
+       }
       </div>
     </div>
   );

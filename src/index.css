@@ -40,3 +40,43 @@ button{
   padding: 0.5rem 1rem;
   
 }
+.all-post{
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  padding-top: 3rem;
+flex-wrap: wrap;
+}
+
+.post-item{
+  color: white;
+  height: 100%;
+}
+
+.post-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+padding: 1rem 2rem;
+background: rgb(61, 51, 51);
+border-radius: 1rem;
+width: 30vw;
+height: 30vh;
+}
+.ps{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.dlt{
+  width: 100%;
+  border-radius: 1rem;
+  margin-top: -1rem;
+  border: none;
+  transition: 300ms;
+  
+}
+.dlt:hover{
+  color: red;
+}
