@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import PostItem from "../components/PostItem";
+import { usePostContext } from "../hooks/usePostContext";
 
 const HomePage = () => {
-  const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState("");
+
+  const {posts,dispatch}= usePostContext()
 
   const handlePost = async (e) => {
     e.preventDefault();
@@ -20,6 +22,8 @@ const HomePage = () => {
 
     if (res.ok) {
       setTitle("");
+      dispatch({type:"POST",payload:data})
+
     }
     return;
   };
@@ -35,7 +39,7 @@ const HomePage = () => {
 
       const data = await res.json();
       if (res.ok) {
-        setPosts(data);
+        dispatch({type:"POST",payload:data})
       }
     };
     getPosts();

@@ -1,4 +1,11 @@
+import { usePostContext } from "../hooks/usePostContext";
+
+
 const PostItem = ({ post }) => {
+  
+  
+  const  dispatch= usePostContext()
+
   const handleDelete = async () => {
     const res = await fetch(`http://localhost:4000/api/user/${post._id}`, {
       method: "DELETE",
@@ -6,6 +13,12 @@ const PostItem = ({ post }) => {
         "Content-Type": "application/json",
       },
     });
+
+    const data = await res.json()
+
+    if(res.ok){
+      dispatch({type:"DELETE",payload:data})
+    }
   };
 
   return (
